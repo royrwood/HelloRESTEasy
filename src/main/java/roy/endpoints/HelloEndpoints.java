@@ -2,10 +2,12 @@ package roy.endpoints;
 
 import com.google.inject.Inject;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import java.util.logging.Logger;
 
@@ -22,7 +24,10 @@ public class HelloEndpoints {
     @GET
     @Path("/hello/{userid}")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getHello(@PathParam("userid") String userid) {
+    public String getHello(@Context HttpServletRequest request, @PathParam("userid") String userid) {
+        String authUserID = (String) request.getAttribute("auth-userid");
+        String authPassword = (String) request.getAttribute("auth-password");
+
         logger.info("Received request with userid=" + userid);
 
         String response = "Hello, " + userid + ".\r\n";
