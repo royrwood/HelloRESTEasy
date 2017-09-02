@@ -25,6 +25,7 @@ public class HelloEndpoints {
     @Path("/hello/{userid}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getHello(@Context HttpServletRequest request, @PathParam("userid") String userid) {
+        // These attributes were injected into the request by the HTTPBasicAuthFilter as an example
         String authUserID = (String) request.getAttribute("auth-userid");
         String authPassword = (String) request.getAttribute("auth-password");
 

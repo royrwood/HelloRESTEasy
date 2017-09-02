@@ -87,7 +87,7 @@ public class HTTPBasicAuthFilter implements javax.ws.rs.container.ContainerReque
             requestContext.abortWith(ACCESS_DENIED);
         }
 
-        // Make the userid and password easily available in the endpoint methods
+        // It's easy to pass along any useful data to the endpoint...
         requestContext.setProperty("auth-userid", userID);
         requestContext.setProperty("auth-password", password);
 
