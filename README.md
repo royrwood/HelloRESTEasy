@@ -39,4 +39,7 @@ Once the service is deployed, you can invoke services using curl like this:
 
 Note that the URI used to address the service depends on the project/build/finalName element in the pom.xml file, as well as the @Path annotations on the endpoint in HelloEndpoints.java.  Mapping of these URIs to the servlet must also be configured in the web.xml file.
 
+The project includes a sample ContainerRequestFilter (HTTPBasicAuthFilter.java) to demonstrate how you might wish to handle authentication/authorization.  The filter stores a copy of the userID/password in the request as a demonstration of how you can pass information along to your endpoint method.
+
+Note that the pom.xml probably contains some unnecessary dependencies, since I've been testing some other things as I work on this...
 
